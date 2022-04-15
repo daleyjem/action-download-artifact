@@ -143,7 +143,7 @@ async function main() {
             })
 
             if (!shouldUnpack) continue
-            
+
             const dir = name ? path : pathname.join(path, artifact.name)
 
             fs.mkdirSync(dir, { recursive: true })
