@@ -87,3 +87,18 @@ jobs:
           workflow_conclusion: ''
       - name: Test
         run: cat artifact/sha | grep $GITHUB_SHA
+  download-no-unpack:
+    runs-on: ubuntu-latest
+    need: wait
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Download
+        uses: ./
+        with:
+          workflow: upload.yml
+          name: artifact
+          path: artifact
+          workflow_conclusion: ''
+      - name: Test
+        run: ls -al
